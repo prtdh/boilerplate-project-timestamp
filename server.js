@@ -29,8 +29,8 @@ app.get("/api/:date", function (req, res) {
     let str=timestamp.date
     const string=str.toString()
 
-    if(string.length>10){
-      str=+str;
+    if (/^\d*$/.test(str)) {
+      str = parseInt(str);
     }
     if(new Date(str).toUTCString()==='Invalid Date'){
       res.json({error:'Invalid Date'})
